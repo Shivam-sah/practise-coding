@@ -3,6 +3,13 @@ package com.Interview.PrototypeDesignPattern;
 public class SheepFarm {
 
 	public static void main(String[] args) {
+		/*
+		 * The Prototype design pattern is a creational pattern that creates new objects by cloning existing 
+		 * ones instead of creating them from scratch. This approach is particularly useful when object 
+		 * creation is complex, time-consuming, or resource-intensive.
+		 */
+		 		
+		
 		// Create prototype sheep
         Sheep blackPrototype = new BlackSheep("Baa Baa");
         Sheep whitePrototype = new WhiteSheep("Fleecy");
