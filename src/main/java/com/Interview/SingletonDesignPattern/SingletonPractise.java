@@ -10,7 +10,7 @@ public class SingletonPractise {
 //		Singleton instanceOne = Singleton.getInstance();
 //		Singleton instanceTwo = (Singleton) Singleton.getInstance().Clone();
 //		System.out.println("Hashcode of Object 1: " + instanceOne.hashCode());
-//        System.out.println("Hashcode of Object 2: " + instanceTwo.hashCode());
+//      System.out.println("Hashcode of Object 2: " + instanceTwo.hashCode());
 		
         
         
@@ -41,8 +41,7 @@ public class SingletonPractise {
 //        System.out.println("Hashcode of Object 1: " + instanceOne.hashCode());
 //        System.out.println("Hashcode of Object 2: " + instanceTwo.hashCode());
         
-        
-        
+               
 	}
 
 }

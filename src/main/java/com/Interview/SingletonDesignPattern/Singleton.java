@@ -11,9 +11,9 @@ public class Singleton implements Cloneable,Serializable {
 	private static Singleton instance = null;
 
 	private Singleton() {		
-//		if(instance != null) {
-//			throw new RuntimeException("Use Get Instance Method to Clone Objects");
-//		}		
+		if(instance != null) {
+			throw new RuntimeException("Use Get Instance Method to Clone Objects");
+		}		
 	}
 	
 	public static Singleton getInstance() {
