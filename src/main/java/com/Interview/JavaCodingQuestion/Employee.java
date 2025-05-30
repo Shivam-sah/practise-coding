@@ -1,6 +1,8 @@
 package com.Interview.JavaCodingQuestion;
 
-public class Employee {
+import java.util.Objects;
+
+public class Employee implements Comparable<Employee>{
 	
 	private int id;
     private String name;
@@ -100,5 +102,27 @@ public class Employee {
     public void setYearOfJoining(int yearOfJoining) {
         this.yearOfJoining = yearOfJoining;
     }
+    
+    
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // same reference
+        if (o == null || getClass() != o.getClass()) return false; // null or not same class
+
+        Employee employee = (Employee) o;
+        return id == employee.id &&
+               Objects.equals(name, employee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+	@Override
+	public int compareTo(Employee o) {
+		return this.id - o.id; //Ascending Order
+	}
 
 }

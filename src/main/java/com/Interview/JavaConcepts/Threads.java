@@ -13,6 +13,14 @@ public class Threads {
 	 
 	
 	public static class Mythread1 implements Runnable{
+		/*
+		 * This is the best way of creating threads as it allows your class to inherit 
+		 * other class.
+		 * 
+		 * Resource Sharing -> You can easily share a single runnable instance among multiple threads.
+		 * 
+		 */
+				
 		@Override
 		public void run() {
 			System.out.println("Implementing Runnable Thread Class is running");			
