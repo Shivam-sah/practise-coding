@@ -1,5 +1,6 @@
 package com.Interview.JavaConcepts;
 
+import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
@@ -57,7 +58,24 @@ public class lambdaDemo {
 	 
 	 /*
 	  * Consumer It is a function that consumes a value without returning anything.
+	  * 
 	  */
+	 
+	 
+	 /*
+	  * Bifunction It takes a two values and return a single output.
+	  * 
+	  */
+	 
+	 	BiFunction<Integer,Integer,Integer> add = (a , b) -> {
+	 		return a + b;
+	 	};
+	 	
+		
+	 
+	 
+	 
+	 
 		
 	@FunctionalInterface
 	interface Demo{	
@@ -75,19 +93,24 @@ public class lambdaDemo {
 				
 //		Demo example = new Demo() {
 //			@Override
-//			public void run() {
-//				System.out.println("This is annonymous inner class");
+//			public int add(int a, int b) {
+//				// TODO Auto-generated method stub
+//				return a+b;
 //			}
-//
-//	};
-	
-	
-	Demo example  =  (int a ,int b) -> {
-		return a+b;
+		
+		
+		Demo example  =  (int a ,int b) -> {
+			return a+b;
+		};
+			
+
 	};
 	
 	
 	
+	
+	
+	
 
-	}
 }
+

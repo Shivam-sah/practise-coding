@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 import com.Interview.JavaConcepts.ComparableVSComparator;
 
 public class PractiseSet2 {
@@ -94,6 +96,7 @@ public class PractiseSet2 {
 		 * 
 		 */		
 		 Optional<Employee> emp = empList.stream().sorted(Comparator.comparing(Employee::getAge,Comparator.reverseOrder())).findFirst();
+		 Optional<Employee> empDup = empList.stream().sorted(Comparator.reverseOrder()).findFirst();
 		 System.out.println("6 -----> " + emp.get());
 		
 		 
@@ -116,7 +119,7 @@ public class PractiseSet2 {
 		 * 9 .  Youngest Female
 		 * 
 		 */
-		Optional<Employee> youngestFemale = empList.stream().filter(x -> x.getGender().equals("F")).sorted(Comparator.comparing(Employee::getAge)).findFirst();
+		Optional<Employee> youngestFemale = empList.stream().filter(x -> x.getGender().equals("F")).sorted(Comparator.comparing(Employee::getAge).reversed()).findFirst();
 		System.out.println(youngestFemale.get());
 		
 		
@@ -132,8 +135,7 @@ public class PractiseSet2 {
 		 */
 		
 		Optional<Map.Entry<String, Long>> topDept = empList.stream().collect(Collectors.groupingBy(x -> x.getDeptName(),Collectors.counting()))
-		.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).findFirst();
-		
+		.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())).findFirst();		
 		System.out.print(topDept);
 		
 		
@@ -143,10 +145,31 @@ public class PractiseSet2 {
 		 *  
 		 */
 		
-		empList.stream().collect(Collectors.groupingBy(Employee::getDeptName,Collectors.counting()))
-		.entrySet().stream().filter(x -> x.getValue() > 3).forEach(System.out::println);
+		Map<String,Long> eg = empList.stream().collect(Collectors.groupingBy(Employee::getDeptName,Collectors.counting()))
+		.entrySet().stream().filter(x -> x.getValue() > 3).collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue));
+		
+		/*
+		 * Highest salary based on department
+		 * 
+		 */
+		
+		Map<String, Optional<Employee>> secondHighestSalaries = empList.stream()
+			    .collect(Collectors.groupingBy(
+			        Employee::getDeptName,
+			        Collectors.collectingAndThen(
+			            Collectors.toList(),
+			            list -> list.stream()
+			                        .sorted(Comparator.comparingDouble(Employee::getSalary).reversed())
+			                        .skip(1)
+			                        .findFirst()
+			        )
+			    ));
 		
 		
+		Map<String, List<Employee>> sortedEmployeeAsc = empList.stream().collect(Collectors.groupingBy(Employee::getDeptName, 
+                Collectors.collectingAndThen(Collectors.toList(),
+                list -> list.stream().sorted(Comparator.comparingDouble(Employee::getSalary)).collect(Collectors.toList()))));
+
 		
 		
 	}

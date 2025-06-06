@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 
 public class Singleton implements Cloneable,Serializable {
-	private static Singleton instance = null;
+	private static volatile Singleton instance = null;
 
 	private Singleton() {		
 		if(instance != null) {

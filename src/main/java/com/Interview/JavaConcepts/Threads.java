@@ -3,7 +3,8 @@ package com.Interview.JavaConcepts;
 
 public class Threads {
 	
-	public static class Mythread extends Thread{		
+	public static class Mythread extends Thread{	
+		
 		@Override
         public void run() {
             System.out.println("Extending Thread Class is running");
